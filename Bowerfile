@@ -1,0 +1,7 @@
+# A sample Bowerfile
+# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
+
+asset 'mbostock_d3' , github: 'mbostock/d3'
+asset 'zAccordion' , github: 'natearmagost/zAccordion'
+asset 'jquery-ui'
+asset 'jQuery-Shadow' , github: 'sydlawrence/jQuery-Shadow'

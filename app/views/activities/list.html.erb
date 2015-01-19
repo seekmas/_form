@@ -1,0 +1,18 @@
+
+<table class="table">
+    <tr>
+      <td>名字/昵称</td>
+      <td>工作</td>
+      <td>公司</td>
+      <td>备注信息</td>
+    </tr>
+    <% @checks.each do |f| %>
+    <tr>
+
+      <td><%= f.name %></td>
+      <td><%= f.job %></td>
+      <td><%= f.company %></td>
+      <td><%= f.description %></td>
+    </tr>
+    <% end %>
+</table>

@@ -1,0 +1,9 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "mbostock_d3": "git://github.com/mbostock/d3",
+    "zAccordion": "git://github.com/natearmagost/zAccordion",
+    "jquery-ui": "latest",
+    "jQuery-Shadow": "git://github.com/sydlawrence/jQuery-Shadow"
+  }
+}

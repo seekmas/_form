@@ -1,0 +1,115 @@
+<div class="col-md-36 hidden-sm hidden-xs" align="center">
+<ul id="featured">
+    <% @activity.presentations.each do |p| %>
+    <li>
+        <%= image_tag p.photo.url%>
+    </li>
+  <% end %>
+</ul>
+</div>
+<style type="text/css">
+    table {
+        border-width: 0;
+        border-style: none;
+        border-color: #0000ff;
+        border-collapse: collapse;
+    }
+    td {
+        border-width: 0;
+        border-style: none;
+        border-color: #0000ff;
+        border-collapse: collapse;
+        padding: 0;
+        margin: 0;
+        width: 5px;
+        height: 5px;
+    }
+    td.black { background-color: #000; }
+    td.white { background-color: #fff; }
+</style>
+<div class="col-md-18">
+    <div class="panel"><div class="panel-body">
+
+      <a class="hidden-md hidden-lg btn btn-block btn-primary" href="#form">立即报名</a>
+
+    <p>
+      <h3><%= @activity.subject %></h3>
+    </p>
+
+    <p>
+      <%= @activity.content.html_safe %>
+    </p>
+
+    <p>
+      <strong>Expired at:</strong>
+      <%= @activity.expired_at %>
+    </p>
+
+      <% if current_admin %>
+        <%= link_to 'Edit', edit_activity_path(@activity) %> |
+        <%= link_to 'Back', activities_path %>
+      <% end %>
+
+    </div></div>
+</div>
+
+<div class="col-md-18">
+  <div id="form" class="panel"><div class="panel-body">
+
+    <div class="shadow hidden-sm hidden-xs" align="center">
+    <table>
+      <% @qr.modules.each_index do |x| %>
+          <tr>
+            <% @qr.modules.each_index do |y| %>
+                <% if @qr.dark?(x,y) %>
+                    <td class="black"/>
+                <% else %>
+                    <td class="white"/>
+                <% end %>
+            <% end %>
+          </tr>
+      <% end %>
+    </table>
+    扫一扫微信分享
+    </div>
+
+    <h4>报名表</h4>
+
+    <%= simple_form_for(@check) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :activity_id , :label => '姓名', :as => :hidden , :input_html => { :value => @activity.id } %>
+          <%= f.input :name , :label => '姓名' %>
+          <%= f.input :phone , :label => '手机号' %>
+          <%= f.input :email , :label => '邮箱' %>
+          <%= f.input :job , :label => '工作' %>
+          <%= f.input :company , :label => '公司名' %>
+          <%= f.input :description , :label => '自我介绍' %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit , '报名' , :class => 'btn btn-primary btn-block' %>
+        </div>
+    <% end %>
+
+
+  </div></div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $("#featured").zAccordion({
+            easing: 'easeOutBounce',
+            timeout: 2500,
+            slideWidth: 600,
+            width: 900,
+            height: 310
+        });
+    });
+
+    $('.shadow')
+            .shadow('perspective');
+    $('img').shadow('lifted');
+</script>
