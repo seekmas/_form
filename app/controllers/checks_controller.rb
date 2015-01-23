@@ -31,7 +31,7 @@ class ChecksController < ApplicationController
 
     respond_to do |format|
       if @check.save
-        format.html { redirect_to @activity, notice: '报名成功 我们将在下次活动前通知你.' }
+        format.html { redirect_to @activity, notice: "报名成功 我们将在下次活动前通知你." }
         format.json { render :show, status: :created, location: @check }
       else
         format.html { render :new }

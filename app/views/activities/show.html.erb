@@ -30,7 +30,7 @@
 <div class="col-md-18">
     <div class="panel"><div class="panel-body">
 
-      <a class="hidden-md hidden-lg btn btn-block btn-primary" href="#form">立即报名</a>
+      <a class="hidden-md hidden-lg btn btn-lg btn-block btn-primary" href="#form">立即报名</a>
 
     <p>
       <h3><%= @activity.subject %></h3>
@@ -41,8 +41,8 @@
     </p>
 
     <p>
-      <strong>Expired at:</strong>
-      <%= @activity.expired_at %>
+      <strong>活动截止日期:</strong>
+      <%= @activity.expired_at.to_formatted_s(:db) %>
     </p>
 
       <% if current_admin %>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit , '报名' , :class => 'btn btn-primary btn-block' %>
+          <%= f.button :submit , '报名' , :class => 'btn btn-primary btn-lg btn-block' %>
         </div>
     <% end %>
 
